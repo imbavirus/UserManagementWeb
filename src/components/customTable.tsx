@@ -69,7 +69,8 @@ export const CustomTable = <T extends { id : number }>({
   isLoading,
 } : CustomTableProps<T>) => {
   return (
-    <div className="overflow-x-auto shadow-md sm:rounded-lg">
+    <div className="overflow-x-auto shadow-md sm:rounded-lg" suppressHydrationWarning>
+        <Loader isLoading={!!isLoading} />
       <div className="flex justify-end p-4 bg-white dark:bg-gray-800">
         <button
           onClick={onAddItem}
@@ -85,7 +86,6 @@ export const CustomTable = <T extends { id : number }>({
             {caption}
           </caption>
         )}
-        <Loader isLoading={!!isLoading} />
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th key={'actions_header'} scope="col" className="px-6 py-3">

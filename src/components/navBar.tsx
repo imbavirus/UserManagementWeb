@@ -18,7 +18,7 @@ export const Navbar = () => {
   return (
     <nav className="bg-gray-800 text-white p-4 shadow-md" suppressHydrationWarning>
       <div className="container mx-auto flex justify-between items-center" suppressHydrationWarning>
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4" suppressHydrationWarning>
           {canGoBack && (
             <button
               onClick={() => router.back()}

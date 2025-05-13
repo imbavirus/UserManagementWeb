@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { IRoleFormValues, roleFormSchema, RoleFormValues } from '@/@types/user/role/roleFormValues';
 import { IRole } from '@/@types/user/role/role';
+import { Loader } from '../loader';
 
 interface RoleFormProps {
   onSubmit : (values : IRoleFormValues) => void;
@@ -40,6 +41,7 @@ export const RoleForm= ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <Loader isLoading={isLoading} />
       <div>
         <label htmlFor="name" className={labelClassName}>
           Name
@@ -53,7 +55,7 @@ export const RoleForm= ({
         />
         {errors.name && <p className={errorClassName}>{errors.name.message}</p>}
       </div>
-      <div className="flex items-center justify-end space-x-4">
+      <div className="flex items-center justify-end space-x-4" suppressHydrationWarning>
         {onCancel && (
             <button
                 type="button"

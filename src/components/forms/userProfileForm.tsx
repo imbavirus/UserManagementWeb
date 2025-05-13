@@ -8,6 +8,7 @@ import { IRole } from '@/@types/user/role/role';
 import { IOptionType } from '@/@types/optionType';
 import { IUserProfile } from '@/@types/user/userProfile/userProfile';
 import { getAllRoles } from '@/actions/roleActions';
+import { Loader } from '../loader';
 
 interface UserProfileFormProps {
   onSubmit : (values : IUserProfileFormValues) => void;
@@ -71,6 +72,7 @@ export const UserProfileForm= ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <Loader isLoading={isLoading} />
       <div>
         <label htmlFor="name" className={labelClassName}>
           Name
@@ -147,7 +149,7 @@ export const UserProfileForm= ({
             )}
         />
         {errors.role && <p className={errorClassName}>{errors.role.message || (errors.role as { value ?: { message ?: string } })?.value?.message}</p>}
-        <div className="p-5 flex items-center">
+        <div className="p-5 flex items-center" suppressHydrationWarning>
             <input
                 id="receiveNewsletter"
                 type="checkbox"
@@ -164,7 +166,7 @@ export const UserProfileForm= ({
             {errors.receiveNewsletter && <p className={`${errorClassName} ml-2`}>{errors.receiveNewsletter.message}</p>}
         </div>
       </div>
-      <div className="flex items-center justify-end space-x-4">
+      <div className="flex items-center justify-end space-x-4" suppressHydrationWarning>
         {onCancel && (
             <button
                 type="button"

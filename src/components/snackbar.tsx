@@ -29,7 +29,7 @@ const SnackbarItemDisplay = ({ snackbarItem } : { snackbarItem : SnackbarMessage
       role="alert"
       aria-live="assertive"
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between" suppressHydrationWarning>
         <span>{message}</span>
         <button
           onClick={() => hideSnackbar(id)} // Hide specific snackbar on click
