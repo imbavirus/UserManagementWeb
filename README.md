@@ -59,8 +59,8 @@ Before running the frontend application, you'll need to set up and run the backe
     ```bash
     cp .env.example .env
     ```
-2.  Open the newly created `.env` file and ensure the `API_BASE_URL` points to your User Management API.
-3.  Install the project dependencies:
+   - Open the newly created `.env` file and ensure the `API_BASE_URL` points to your User Management API.
+   - Install the project dependencies:
     ```bash
     npm install
     ```
@@ -76,8 +76,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Previews
 
+* User Profile Listing Page
 ![User Profile Listing](https://i.gyazo.com/ae020f92a3f236a113e659d38cd37768.png)
-* User Profile Listing Page*
 
+* User Profile Edit Page
 ![User Profile Edit](https://i.gyazo.com/38837a45a022824965a3389b9527f392.png)
-* User Profile Edit Page*
