@@ -16,7 +16,7 @@ export type IUserProfileFormValues = z.infer<typeof userProfileFormSchema>;
 
 // Factory function to create form values
 export const UserProfileFormValues = (roles : Array<IRole>, userProfile ?: IUserProfile) : IUserProfileFormValues => {
-    // Handle the default case (new unit of measure)
+    // Handle the default case (new user profile)
     if (!userProfile) {
         const val =  userProfileFormSchema.parse({});
         return val;
@@ -43,7 +43,7 @@ export const validateUserProfileForm = (formValues : IUserProfileFormValues) : b
         return true;
     } catch (error) {
         if (error instanceof z.ZodError) {
-            console.error('Unit of measure form validation failed:', error.errors);
+            console.error('User profile form validation failed:', error.errors);
         } else {
             console.error('An unexpected error occurred during validation:', error);
         }

@@ -10,7 +10,7 @@ export type IRoleFormValues = z.infer<typeof roleFormSchema>;
 
 // Factory function to create form values
 export const RoleFormValues = (role ?: IRole) : IRoleFormValues => {
-    // Handle the default case (new unit of measure type)
+    // Handle the default case (new role)
     if (!role) {
         return roleFormSchema.parse({});
     }
@@ -27,7 +27,7 @@ export const validateRoleForm = (formValues : IRoleFormValues) : boolean => {
         return true;
     } catch (error) {
         if (error instanceof z.ZodError) {
-            console.error('Unit of measure type form validation failed:', error.errors);
+            console.error('Role form validation failed:', error.errors);
         } else {
             console.error('An unexpected error occurred during validation:', error);
         }

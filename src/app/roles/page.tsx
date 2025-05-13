@@ -5,11 +5,13 @@ import { CustomTable } from '@/components/customTable';
 import { IRole } from '@/@types/user/role/role';
 import { getAllRoles } from '@/actions/roleActions';
 import { useRouter } from 'next/navigation';
+import { useSnackbar } from '@/lib/snackbarContext';
 
 export default function RolesPage() {
   const [roles, setRoles] = useState<IRole[]>();
   const [isLoading, setLoading] = useState(false);
   const router = useRouter();
+  const { showSnackbar } = useSnackbar();
 
   useEffect(() => {
     const loadRoles = async () => {
@@ -19,13 +21,14 @@ export default function RolesPage() {
         setRoles(data?.data);
       } catch (err) {
         console.error('Failed to fetch roles:', err);
+        showSnackbar('Failed to load roles.', 'error');
       } finally {
         setLoading(false);
       }
     };
 
     loadRoles();
-  }, []);
+  }, [showSnackbar]);
 
   const handleAddRole = () => {
     router.push('/roles/new');

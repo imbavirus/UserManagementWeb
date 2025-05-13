@@ -6,6 +6,7 @@ import { getUserProfileById, updateUserProfile } from '@/actions/userProfileActi
 import { UserProfileForm } from '@/components/forms/userProfileForm';
 import { IUserProfileFormValues } from '@/@types/user/userProfile/userProfileFormValues';
 import { useParams, useRouter } from 'next/navigation';
+import { useSnackbar } from '@/lib/snackbarContext';
 
 export default function UserProfilesPage() {
   const { id } = useParams<{ id : Array<string> }>();
@@ -13,7 +14,7 @@ export default function UserProfilesPage() {
   const [isLoading, setLoading] = useState(false);
   const [formSubmitting, setFormSubmitting] = useState(false);
   const router = useRouter();
-  
+  const { showSnackbar } = useSnackbar();  
 
   useEffect(() => {
     const loadUserProfile = async () => {
@@ -46,15 +47,19 @@ export default function UserProfilesPage() {
   const handleFormSubmit = async (values : IUserProfileFormValues) => {
     setFormSubmitting(true);
     console.log('Form submitted for profile edit:', values);
+    showSnackbar('Updating user profile...', 'info');
     try {
       const result = await updateUserProfile(UserProfile(values));
       if (result?.data) {
         onFormClose();
+        showSnackbar('User profile updated successfully.', 'success');
       } else {
         console.error('Failed to create user profile:', result?.serverError || result?.validationErrors);
+        showSnackbar('Failed to create user profile.', 'error');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      showSnackbar('Failed to create user profile.', 'error');
     } finally {
       setFormSubmitting(false);
     }

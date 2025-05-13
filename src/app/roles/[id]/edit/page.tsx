@@ -6,6 +6,7 @@ import { getRoleById, updateRole } from '@/actions/roleActions';
 import { RoleForm } from '@/components/forms/roleForm';
 import { IRoleFormValues } from '@/@types/user/role/roleFormValues';
 import { useParams, useRouter } from 'next/navigation';
+import { useSnackbar } from '@/lib/snackbarContext';
 
 export default function RolesPage() {
   const { id } = useParams<{ id : Array<string> }>();
@@ -13,7 +14,7 @@ export default function RolesPage() {
   const [isLoading, setLoading] = useState(false);
   const [formSubmitting, setFormSubmitting] = useState(false);
   const router = useRouter();
-  
+  const { showSnackbar } = useSnackbar();  
 
   useEffect(() => {
     const loadRole = async () => {
@@ -31,13 +32,14 @@ export default function RolesPage() {
         setRole(data?.data);
       } catch (err) {
         console.error('Failed to fetch roles:', err);
+        showSnackbar('Failed to load roles.', 'error'); 
       } finally {
         setLoading(false);
       }
     };
 
     loadRole();
-  }, [id, router]);
+  }, [id, router, showSnackbar]);
 
   const onFormClose = () => {
     router.push('/roles');
@@ -46,15 +48,19 @@ export default function RolesPage() {
   const handleFormSubmit = async (values : IRoleFormValues) => {
     setFormSubmitting(true);
     console.log('Form submitted for role edit:', values);
+    showSnackbar('Updating role...', 'info');
     try {
       const result = await updateRole(Role(values));
       if (result?.data) {
         onFormClose();
+        showSnackbar('Role updated successfully.', 'success');
       } else {
         console.error('Failed to create role:', result?.serverError || result?.validationErrors);
+        showSnackbar('Failed to create role.', 'error');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      showSnackbar('Failed to create role.', 'error');
     } finally {
       setFormSubmitting(false);
     }

@@ -4,12 +4,14 @@ import React, { useEffect, useState } from 'react';
 import { CustomTable } from '@/components/customTable';
 import { IUserProfile } from '@/@types/user/userProfile/userProfile';
 import { getAllUserProfiles } from '@/actions/userProfileActions';
+import { useSnackbar } from '@/lib/snackbarContext';
 import { useRouter } from 'next/navigation';
 
 export default function UserProfilesPage() {
   const [userProfiles, setUserProfiles] = useState<IUserProfile[]>();
   const [isLoading, setLoading] = useState(false);
   const router = useRouter();
+  const { showSnackbar } = useSnackbar();
 
   useEffect(() => {
     const loadUserProfiles = async () => {
@@ -19,13 +21,14 @@ export default function UserProfilesPage() {
         setUserProfiles(data?.data);
       } catch (err) {
         console.error('Failed to fetch user profiles:', err);
+        showSnackbar('Failed to load user profiles.', 'error');
       } finally {
         setLoading(false);
       }
     };
 
     loadUserProfiles();
-  }, []);
+  }, [showSnackbar]);
 
   const handleAddUserProfile = () => {
     router.push('/profiles/new');
