@@ -48,22 +48,31 @@ Before running the frontend application, you'll need to set up and run the backe
 
 **2. Configure the Frontend Application:**
    - Clone this frontend repository (if you haven't already):
+
      ```bash
      git clone https://github.com/imbavirus/UserManagementWeb.git 
      ```
+
    - Navigate into the frontend project directory:
+
      ```bash
      cd UserManagementWeb
      ```
+
    - Copy the example environment file:
+
     ```bash
     cp .env.example .env
     ```
+
    - Open the newly created `.env` file and ensure the `API_BASE_URL` points to your User Management API.
+   
    - Install the project dependencies:
+
     ```bash
     npm install
     ```
+
 ## Running the Application
 
 First, run the development server:
