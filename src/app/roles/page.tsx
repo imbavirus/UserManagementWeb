@@ -16,9 +16,11 @@ export default function RolesPage() {
   useEffect(() => {
     const loadRoles = async () => {
       setLoading(true);
+      showSnackbar('Loading roles...', 'info');
       try {
         const data = await getAllRoles();
         setRoles(data?.data);
+        showSnackbar('Roles loaded successfully.', 'success');
       } catch (err) {
         console.error('Failed to fetch roles:', err);
         showSnackbar('Failed to load roles.', 'error');

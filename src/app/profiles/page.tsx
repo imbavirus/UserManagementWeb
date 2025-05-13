@@ -16,9 +16,11 @@ export default function UserProfilesPage() {
   useEffect(() => {
     const loadUserProfiles = async () => {
       setLoading(true);
+      showSnackbar('Loading user profiles...', 'info');
       try {
         const data = await getAllUserProfiles();
         setUserProfiles(data?.data);
+        showSnackbar('User profiles loaded successfully.', 'success');
       } catch (err) {
         console.error('Failed to fetch user profiles:', err);
         showSnackbar('Failed to load user profiles.', 'error');
