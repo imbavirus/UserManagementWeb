@@ -47,13 +47,13 @@ export default function RolesPage() {
 
   return (
     <div suppressHydrationWarning={true}>
-      <h1 className="text-2xl font-bold mb-6">Roles Management</h1>
+      <h1 className='text-2xl font-bold mb-6'>Roles Management</h1>
       <CustomTable<IRole>
         data={roles ?? []}
         columns={columns}
         onAddItem={handleAddRole}
         onEditItem={handleEditRole}
-        caption="Roles"
+        caption='Roles'
         isLoading={isLoading}
       />
     </div>

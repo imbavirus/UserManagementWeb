@@ -26,13 +26,13 @@ export default function RootLayout({
   children : React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang='en' suppressHydrationWarning>
       <body suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SnackbarProvider>
           <Navbar />
-          <main className="container mx-auto p-4" suppressHydrationWarning>
+          <main className='container mx-auto p-4' suppressHydrationWarning>
             {children}
           </main>
           <Snackbar />

@@ -4,11 +4,11 @@ import { IUserProfileFormValues } from './userProfileFormValues';
 
 // Define the Zod schema based on the IUserProfile interface
 export const userProfileSchema = baseModelSchema.extend({
-    name: z.string().min(1, 'Name is required').max(255, 'Name can only be up to 255 characters long.').optional(),
-    email: z.string().email().min(1, 'Email is required').max(255, 'Email can only be up to 255 characters long.').optional(),
-    bio: z.string().min(1, 'Bio is required').max(255, 'Bio can only be up to 255 characters long.').optional(),
+    name: z.string().min(1, 'Name is required').max(255, 'Name can only be up to 255 characters long.'),
+    email: z.string().email().min(1, 'Email is required').max(255, 'Email can only be up to 255 characters long.'),
+    bio: z.string().min(1, 'Bio is required').max(255, 'Bio can only be up to 255 characters long.'),
     receiveNewsletter: z.boolean().default(false),
-    roleId: z.number().min(1, 'A valid role must be assigned.').optional(),
+    roleId: z.number().min(1, 'A valid role must be assigned.'),
 });
 
 // Infer TypeScript type (replaces the original interface)

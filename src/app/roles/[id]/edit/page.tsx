@@ -76,7 +76,7 @@ export default function RolesPage() {
         onSubmit={handleFormSubmit}
         onCancel={onFormClose}
         isLoading={formSubmitting || isLoading}
-        submitButtonText="Edit Role"
+        submitButtonText='Edit Role'
       />
   );
 }

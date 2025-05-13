@@ -44,7 +44,7 @@ export default function UserProfilesPage() {
         onSubmit={handleFormSubmit}
         onCancel={onFormClose}
         isLoading={formSubmitting}
-        submitButtonText="Create Profile"
+        submitButtonText='Create Profile'
       />
     </div>
   );

@@ -16,30 +16,30 @@ export const Navbar = () => {
   }, [pathname]);
 
   return (
-    <nav className="bg-gray-800 text-white p-4 shadow-md" suppressHydrationWarning>
-      <div className="container mx-auto flex justify-between items-center" suppressHydrationWarning>
-        <div className="flex items-center space-x-4" suppressHydrationWarning>
+    <nav className='bg-gray-800 text-white p-4 shadow-md' suppressHydrationWarning>
+      <div className='container mx-auto flex justify-between items-center' suppressHydrationWarning>
+        <div className='flex items-center space-x-4' suppressHydrationWarning>
           {canGoBack && (
             <button
               onClick={() => router.back()}
-              className="hover:text-gray-300 px-2 py-1 rounded hover:bg-gray-700 transition-colors duration-150"
-              aria-label="Go back"
+              className='hover:text-gray-300 px-2 py-1 rounded hover:bg-gray-700 transition-colors duration-150'
+              aria-label='Go back'
             >
               &larr; Back
             </button>
           )}
-          <Link href="/" className="text-xl font-semibold hover:text-gray-300">
+          <Link href='/' className='text-xl font-semibold hover:text-gray-300'>
             App Home
           </Link>
         </div>
-        <ul className="flex space-x-4">
+        <ul className='flex space-x-4'>
           <li>
-            <Link href="/profiles" className="hover:text-gray-300">
+            <Link href='/profiles' className='hover:text-gray-300'>
               User Profiles
             </Link>
           </li>
           <li>
-            <Link href="/roles" className="hover:text-gray-300">
+            <Link href='/roles' className='hover:text-gray-300'>
               Roles
             </Link>
           </li>

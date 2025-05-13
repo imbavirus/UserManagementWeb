@@ -11,13 +11,22 @@ export type IRoleFormValues = z.infer<typeof roleFormSchema>;
 // Factory function to create form values
 export const RoleFormValues = (role ?: IRole) : IRoleFormValues => {
     // Handle the default case (new role)
-    if (!role) {
-        return roleFormSchema.parse({});
-    }
+    try {
+        if (!role) {
+            return roleFormSchema.parse({});
+        }
 
-    return roleFormSchema.parse({
-        ...role,
-    });
+        return roleFormSchema.parse({
+            ...role,
+        });
+    } catch (error) {
+        if (error instanceof z.ZodError) {
+            console.error('Role form validation failed:', error.errors);
+        } else {
+            console.error('An unexpected error occurred during validation:', error);
+        }
+        return {} as IRoleFormValues;
+    }
 };
 
 // Validation function using the Zod schema

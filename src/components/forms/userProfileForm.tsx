@@ -71,15 +71,15 @@ export const UserProfileForm= ({
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
       <Loader isLoading={isLoading} />
       <div>
-        <label htmlFor="name" className={labelClassName}>
+        <label htmlFor='name' className={labelClassName}>
           Name
         </label>
         <input
-          id="name"
-          type="text"
+          id='name'
+          type='text'
           {...register('name')}
           className={`${inputClassName} ${errors.name ? 'border-red-500 dark:border-red-400' : ''}`}
           disabled={isLoading}
@@ -88,12 +88,12 @@ export const UserProfileForm= ({
       </div>
 
       <div>
-        <label htmlFor="email" className={labelClassName}>
+        <label htmlFor='email' className={labelClassName}>
           Email
         </label>
         <input
-          id="email"
-          type="email"
+          id='email'
+          type='email'
           {...register('email')}
           className={`${inputClassName} ${errors.email ? 'border-red-500 dark:border-red-400' : ''}`}
           disabled={isLoading}
@@ -102,11 +102,11 @@ export const UserProfileForm= ({
       </div>
 
       <div>
-        <label htmlFor="bio" className={labelClassName}>
+        <label htmlFor='bio' className={labelClassName}>
           Bio
         </label>
         <textarea
-          id="bio"
+          id='bio'
           {...register('bio')}
           className={`${inputClassName} ${errors.bio ? 'border-red-500 dark:border-red-400' : ''}`}
           disabled={isLoading}
@@ -115,15 +115,15 @@ export const UserProfileForm= ({
       </div>
 
       <div>
-        <label htmlFor="role" className={labelClassName}>
+        <label htmlFor='role' className={labelClassName}>
           Role
         </label>
         <Controller
-            name="role"
+            name='role'
             control={control}
             render={({ field }) => (
               <select
-                id="role"
+                id='role'
                 {...field}
                 value={field.value?.value || ''}
                 onChange={(e) => {
@@ -139,7 +139,7 @@ export const UserProfileForm= ({
                 className={`${inputClassName} ${errors.role ? 'border-red-500 dark:border-red-400' : ''}`}
                 disabled={isLoading}
               >
-                <option value="" disabled={field.value?.value !== ''}>Select a role...</option>
+                <option value='' disabled={field.value?.value !== ''}>Select a role...</option>
                 {roleOptions.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
@@ -149,38 +149,38 @@ export const UserProfileForm= ({
             )}
         />
         {errors.role && <p className={errorClassName}>{errors.role.message || (errors.role as { value ?: { message ?: string } })?.value?.message}</p>}
-        <div className="p-5 flex items-center" suppressHydrationWarning>
+        <div className='p-5 flex items-center' suppressHydrationWarning>
             <input
-                id="receiveNewsletter"
-                type="checkbox"
+                id='receiveNewsletter'
+                type='checkbox'
                 {...register('receiveNewsletter')}
                     disabled={isLoading}
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
             />
             <label
-                htmlFor="receiveNewsletter"
-                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                htmlFor='receiveNewsletter'
+                className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300'
             >
                 Receive newsletter
             </label>
             {errors.receiveNewsletter && <p className={`${errorClassName} ml-2`}>{errors.receiveNewsletter.message}</p>}
         </div>
       </div>
-      <div className="flex items-center justify-end space-x-4" suppressHydrationWarning>
+      <div className='flex items-center justify-end space-x-4' suppressHydrationWarning>
         {onCancel && (
             <button
-                type="button"
+                type='button'
                 onClick={onCancel}
                 disabled={isLoading}
-                className="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                className='py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
             >
                 Cancel
             </button>
         )}
         <button
-          type="submit"
+          type='submit'
           disabled={isLoading}
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-50"
+          className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-50'
         >
           {isLoading ? 'Submitting...' : submitButtonText}
         </button>

@@ -44,7 +44,7 @@ export default function RolesPage() {
           onSubmit={handleFormSubmit}
           onCancel={onFormClose}
           isLoading={formSubmitting}
-          submitButtonText="Create Role"
+          submitButtonText='Create Role'
         />
     </div>
   );

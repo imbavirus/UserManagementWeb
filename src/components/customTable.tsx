@@ -69,30 +69,30 @@ export const CustomTable = <T extends { id : number }>({
   isLoading,
 } : CustomTableProps<T>) => {
   return (
-    <div className="overflow-x-auto shadow-md sm:rounded-lg" suppressHydrationWarning>
+    <div className='overflow-x-auto shadow-md sm:rounded-lg' suppressHydrationWarning>
         <Loader isLoading={!!isLoading} />
-      <div className="flex justify-end p-4 bg-white dark:bg-gray-800">
+      <div className='flex justify-end p-4 bg-white dark:bg-gray-800' suppressHydrationWarning>
         <button
           onClick={onAddItem}
           disabled={isLoading}
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none dark:focus:ring-blue-800"
+          className='px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 focus:outline-none dark:focus:ring-blue-800'
         >
           Add New Item
         </button>
       </div>
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
         {caption && (
-          <caption className="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+          <caption className='p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800'>
             {caption}
           </caption>
         )}
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
           <tr>
-            <th key={'actions_header'} scope="col" className="px-6 py-3">
+            <th key={'actions_header'} scope='col' className='px-6 py-3'>
               {'Actions'}
             </th>
             {columns.map((col) => (
-              <th key={String(col.key)} scope="col" className="px-6 py-3">
+              <th key={String(col.key)} scope='col' className='px-6 py-3'>
                 {col.header}
               </th>
             ))}
@@ -100,10 +100,10 @@ export const CustomTable = <T extends { id : number }>({
         </thead>
         <tbody>
           {data.length === 0 ? (
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700'>
               <td
                 colSpan={columns.length + 1}
-                className="px-6 py-4 text-center text-gray-500 dark:text-gray-400"
+                className='px-6 py-4 text-center text-gray-500 dark:text-gray-400'
               >
                 {isLoading ? 'Loading...' : 'No data available.'}
               </td>
@@ -112,19 +112,19 @@ export const CustomTable = <T extends { id : number }>({
             data.map((item) => (
               <tr
                 key={item.id}
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'
               >
-                <td key={`edit_${item.id}`} className="px-6 py-4">
+                <td key={`edit_${item.id}`} className='px-6 py-4'>
                   <button
                     disabled={isLoading}
                     onClick={() => onEditItem(item)}
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    className='font-medium text-blue-600 dark:text-blue-500 hover:underline'
                   >
                     Edit
                   </button>
                 </td>
                 {columns.map((col) => (
-                  <td key={`${item.id}-${String(col.key)}`} className="px-6 py-4">
+                  <td key={`${item.id}-${String(col.key)}`} className='px-6 py-4'>
                     {col.render ? (
                       col.render(item)
                     ) : (

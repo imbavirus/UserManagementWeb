@@ -51,13 +51,13 @@ export default function UserProfilesPage() {
 
   return (
     <div suppressHydrationWarning={true}>
-      <h1 className="text-2xl font-bold mb-6">User Profiles Management</h1>
+      <h1 className='text-2xl font-bold mb-6'>User Profiles Management</h1>
       <CustomTable<IUserProfile>
         data={userProfiles ?? []}
         columns={columns}
         onAddItem={handleAddUserProfile}
         onEditItem={handleEditUserProfile}
-        caption="User Profiles"
+        caption='User Profiles'
         isLoading={isLoading}
       />
     </div>

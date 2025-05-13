@@ -74,7 +74,7 @@ export default function UserProfilesPage() {
         onSubmit={handleFormSubmit}
         onCancel={onFormClose}
         isLoading={formSubmitting || isLoading}
-        submitButtonText="Edit Profile"
+        submitButtonText='Edit Profile'
       />
   );
 }

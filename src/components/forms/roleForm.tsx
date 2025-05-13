@@ -40,36 +40,36 @@ export const RoleForm= ({
   const labelClassName = 'block mb-2 text-sm font-medium text-gray-900 dark:text-white';
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
       <Loader isLoading={isLoading} />
       <div>
-        <label htmlFor="name" className={labelClassName}>
+        <label htmlFor='name' className={labelClassName}>
           Name
         </label>
         <input
-          id="name"
-          type="text"
+          id='name'
+          type='text'
           {...register('name')}
           className={`${inputClassName} ${errors.name ? 'border-red-500 dark:border-red-400' : ''}`}
           disabled={isLoading}
         />
         {errors.name && <p className={errorClassName}>{errors.name.message}</p>}
       </div>
-      <div className="flex items-center justify-end space-x-4" suppressHydrationWarning>
+      <div className='flex items-center justify-end space-x-4' suppressHydrationWarning>
         {onCancel && (
             <button
-                type="button"
+                type='button'
                 onClick={onCancel}
                 disabled={isLoading}
-                className="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                className='py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
             >
                 Cancel
             </button>
         )}
         <button
-          type="submit"
+          type='submit'
           disabled={isLoading}
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-50"
+          className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-50'
         >
           {isLoading ? 'Submitting...' : submitButtonText}
         </button>

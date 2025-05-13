@@ -26,15 +26,15 @@ const SnackbarItemDisplay = ({ snackbarItem } : { snackbarItem : SnackbarMessage
     <div
       // Each snackbar item
       className={`p-4 rounded-md shadow-lg w-full max-w-md ${getSeverityClasses(severity)}`}
-      role="alert"
-      aria-live="assertive"
+      role='alert'
+      aria-live='assertive'
     >
-      <div className="flex items-center justify-between" suppressHydrationWarning>
+      <div className='flex items-center justify-between' suppressHydrationWarning>
         <span>{message}</span>
         <button
           onClick={() => hideSnackbar(id)} // Hide specific snackbar on click
-          className="ml-4 text-current hover:opacity-75 focus:outline-none"
-          aria-label="Close"
+          className='ml-4 text-current hover:opacity-75 focus:outline-none'
+          aria-label='Close'
         >
           &times;
         </button>
@@ -51,7 +51,7 @@ export const Snackbar = () => {
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col-reverse gap-2 items-end">
+    <div className='fixed bottom-5 right-5 z-50 flex flex-col-reverse gap-2 items-end'>
       {snackbars.map((snackbar) => (
         <SnackbarItemDisplay key={snackbar.id} snackbarItem={snackbar} />
       ))}
