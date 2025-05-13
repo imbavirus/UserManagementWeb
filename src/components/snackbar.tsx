@@ -51,7 +51,7 @@ export const Snackbar = () => {
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col-reverse space-y-2 items-end">
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col-reverse gap-2 items-end">
       {snackbars.map((snackbar) => (
         <SnackbarItemDisplay key={snackbar.id} snackbarItem={snackbar} />
       ))}
