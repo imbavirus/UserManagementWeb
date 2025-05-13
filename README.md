@@ -61,17 +61,17 @@ Before running the frontend application, you'll need to set up and run the backe
 
    - Copy the example environment file:
 
-    ```bash
-    cp .env.example .env
-    ```
+      ```bash
+      cp .env.example .env
+      ```
 
    - Open the newly created `.env` file and ensure the `API_BASE_URL` points to your User Management API.
-   
+
    - Install the project dependencies:
 
-    ```bash
-    npm install
-    ```
+      ```bash
+      npm install
+      ```
 
 ## Running the Application
 
