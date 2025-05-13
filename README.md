@@ -73,3 +73,11 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Previews
+
+![User Profile Listing](https://i.gyazo.com/ae020f92a3f236a113e659d38cd37768.png)
+* User Profile Listing Page*
+
+![User Profile Edit](https://i.gyazo.com/38837a45a022824965a3389b9527f392.png)
+* User Profile Edit Page*
