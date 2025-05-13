@@ -29,9 +29,33 @@ Before you begin, ensure you have the following installed:
 
 ## Getting Started
 
-Before running the application, you'll need to set up your environment variables.
+Before running the frontend application, you'll need to set up and run the backend API, and then configure the frontend's environment variables.
 
-1.  Copy the example environment file:
+**1. Set up and run the User Management API:**
+   - Clone the API repository (if you haven't already):
+     ```bash
+     git clone https://github.com/imbavirus/UserManagementAPI.git
+     ```
+   - Navigate into the API project directory:
+     ```bash
+     cd UserManagementAPI 
+     ```
+   - Run the API (this might vary based on the .NET project setup, `dotnet run` is common):
+     ```bash
+     dotnet run
+     ```
+   - Ensure the API is running and accessible. It should be running on [http://localhost:5000](http://localhost:5000). Check the API's output for the exact URL.
+
+**2. Configure the Frontend Application:**
+   - Clone this frontend repository (if you haven't already):
+     ```bash
+     git clone https://github.com/imbavirus/UserManagementWeb.git 
+     ```
+   - Navigate into the frontend project directory:
+     ```bash
+     cd UserManagementWeb
+     ```
+   - Copy the example environment file:
     ```bash
     cp .env.example .env
     ```
