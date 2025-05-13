@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { IOptionType } from '@/@types/optionType';
-import { VerticalLoader } from './loader';
+import { Loader } from './loader';
 
 interface CustomTableProps<T> {
   data : T[];
@@ -85,7 +85,7 @@ export const CustomTable = <T extends { id : number }>({
             {caption}
           </caption>
         )}
-        <VerticalLoader isLoading={!!isLoading} />
+        <Loader isLoading={!!isLoading} />
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th key={'actions_header'} scope="col" className="px-6 py-3">
