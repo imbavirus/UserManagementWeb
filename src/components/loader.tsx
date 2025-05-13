@@ -1,10 +1,10 @@
-export const VerticalLoader = ({ isLoading } : { isLoading : boolean }) => (
+export const Loader = ({ isLoading } : { isLoading : boolean }) => (
     isLoading ?
   <div className="w-1.5 h-24 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
     <div
-      className="h-full bg-blue-500 animate-vertical-loader-fill"
+      className="h-full bg-blue-500 animate-horizontal-loader-fill"
       style={{
-        animation: 'vertical-loader-fill 2s infinite linear',
+        animation: 'horizontal-loader-fill 2s infinite linear',
       }}
       role="progressbar"
       aria-label="Loading..."
