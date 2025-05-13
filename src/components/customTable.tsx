@@ -100,7 +100,7 @@ export const CustomTable = <T extends { id : number }>({
           {data.length === 0 ? (
             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <td
-                colSpan={columns.length}
+                colSpan={columns.length + 1}
                 className="px-6 py-4 text-center text-gray-500 dark:text-gray-400"
               >
                 No data available.
