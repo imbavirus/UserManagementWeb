@@ -50,7 +50,7 @@ Before running the frontend application, you'll need to set up and run the backe
      dotnet run --project ./API 
      ```
 
-   - Ensure the API is running and accessible. It should be running on [http://localhost:5000](http://localhost:5000). Check the API's output for the exact URL.
+   - Ensure the API is running and accessible. It should be running on [http://127.0.0.1:5000](http://127.0.0.1:5000). Check the API's output for the exact URL.
 
 
 **2. Configure the Frontend Application:**
