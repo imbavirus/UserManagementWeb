@@ -8,7 +8,7 @@ import { IRoleFormValues } from '@/@types/user/role/roleFormValues';
 import { useParams, useRouter } from 'next/navigation';
 
 export default function RolesPage() {
-  const { id } = useParams<{id : Array<string>}>();
+  const { id } = useParams<{ id : Array<string> }>();
   const [role, setRole] = useState<IRole>();
   const [isLoading, setLoading] = useState(false);
   const [formSubmitting, setFormSubmitting] = useState(false);
@@ -40,10 +40,10 @@ export default function RolesPage() {
   }, [id, router]);
 
   const onFormClose = () => {
-    router.push(`/roles`);
+    router.push('/roles');
   };
 
-  const handleFormSubmit = async (values: IRoleFormValues) => {
+  const handleFormSubmit = async (values : IRoleFormValues) => {
     setFormSubmitting(true);
     console.log('Form submitted for role edit:', values);
     try {

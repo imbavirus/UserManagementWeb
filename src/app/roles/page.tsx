@@ -28,10 +28,10 @@ export default function RolesPage() {
   }, []);
 
   const handleAddRole = () => {
-    router.push(`/roles/new`);
+    router.push('/roles/new');
   };
 
-  const handleEditRole = (role: IRole) => {
+  const handleEditRole = (role : IRole) => {
     router.push(`/roles/${role.id}/edit`);
   };
 

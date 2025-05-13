@@ -10,8 +10,8 @@ import { IUserProfile } from '@/@types/user/userProfile/userProfile';
 import { getAllRoles } from '@/actions/roleActions';
 
 interface UserProfileFormProps {
-  onSubmit: (values : IUserProfileFormValues) => void;
-  defaultValues? : IUserProfile;
+  onSubmit : (values : IUserProfileFormValues) => void;
+  defaultValues ?: IUserProfile;
   isLoading ?: boolean;
   submitButtonText ?: string;
   onCancel ?: () => void;
@@ -53,16 +53,16 @@ export const UserProfileForm= ({
       reset(UserProfileFormValues(roles, defaultValues));
   }, [defaultValues, roles, reset]);
 
-  const roleOptions: IOptionType[] = useMemo(() => roles.map((x) => {
+  const roleOptions : IOptionType[] = useMemo(() => roles.map((x) => {
     return {
       value: x.id,
       label: x.name ?? '',
-    }
-  }), [roles])
+    };
+  }), [roles]);
 
-  const inputClassName = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500";
-  const errorClassName = "mt-1 text-xs text-red-600 dark:text-red-400";
-  const labelClassName = "block mb-2 text-sm font-medium text-gray-900 dark:text-white";
+  const inputClassName = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500';
+  const errorClassName = 'mt-1 text-xs text-red-600 dark:text-red-400';
+  const labelClassName = 'block mb-2 text-sm font-medium text-gray-900 dark:text-white';
 
   
   if (!roles) {

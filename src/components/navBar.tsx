@@ -47,4 +47,4 @@ export const Navbar = () => {
       </div>
     </nav>
   );
-}
+};

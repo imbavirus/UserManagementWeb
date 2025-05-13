@@ -8,7 +8,7 @@ export const userProfileSchema = baseModelSchema.extend({
     email: z.string().email().min(1, 'Email is required').max(255, 'Email can only be up to 255 characters long.').optional(),
     bio: z.string().min(1, 'Bio is required').max(255, 'Bio can only be up to 255 characters long.').optional(),
     receiveNewsletter: z.boolean().default(false),
-    roleId: z.number().min(1, "A valid role must be assigned.").optional(),
+    roleId: z.number().min(1, 'A valid role must be assigned.').optional(),
 });
 
 // Infer TypeScript type (replaces the original interface)

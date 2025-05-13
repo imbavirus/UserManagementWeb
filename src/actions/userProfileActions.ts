@@ -29,12 +29,12 @@ export const getUserProfileById = actionClient
     const { id } = parsedInput;
     const endpointWithId = `${userProfilesApiPath}/${id}`;
 
-    const userProfile: IUserProfile = await callApiEndpoint(endpointWithId, 'GET');
+    const userProfile : IUserProfile = await callApiEndpoint(endpointWithId, 'GET');
     return userProfile;
   });
 
 export const getAllUserProfiles = actionClient
   .action(async () => {
-    const userProfiles: IUserProfile[] = await callApiEndpoint(userProfilesApiPath, 'GET');
+    const userProfiles : IUserProfile[] = await callApiEndpoint(userProfilesApiPath, 'GET');
     return userProfiles;
   });

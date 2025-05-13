@@ -12,10 +12,10 @@ export default function UserProfilesPage() {
   const [formSubmitting, setFormSubmitting] = useState(false);  
 
   const onFormClose = () => {
-    router.push(`/profiles`);
+    router.push('/profiles');
   };
 
-  const handleFormSubmit = async (values: IUserProfileFormValues) => {
+  const handleFormSubmit = async (values : IUserProfileFormValues) => {
     setFormSubmitting(true);
     console.log('Form submitted for new profile:', values);
     try {

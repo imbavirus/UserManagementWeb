@@ -4,32 +4,32 @@ import React from 'react';
 import { IOptionType } from '@/@types/optionType';
 
 interface CustomTableProps<T> {
-  data: T[];
-  columns: Array<{
-    key: keyof T;
-    header: string;
-    render?: (item: T) => React.ReactNode;
+  data : T[];
+  columns : Array<{
+    key : keyof T;
+    header : string;
+    render ?: (item : T) => React.ReactNode;
   }>;
-  onAddItem: () => void;
-  onEditItem: (item: T) => void;
-  caption?: string;
-  isLoading?: boolean;
+  onAddItem : () => void;
+  onEditItem : (item : T) => void;
+  caption ?: string;
+  isLoading ?: boolean;
 }
 
-const isOptionType = (obj: unknown): obj is IOptionType => {
+const isOptionType = (obj : unknown) : obj is IOptionType => {
   return (
     obj !== null &&
     typeof obj === 'object' &&
     'value' in obj &&
     'label' in obj && typeof (obj as IOptionType).label === 'string'
   );
-}
+};
 
 // recursively get object children from dot separated path 
-const getObject =  (key : string , object : {[key : string] : string 
+const getObject =  (key : string , object : { [key : string] : string 
     | number 
-    | {[key : string] : string | number
-    }} ) => {
+    | { [key : string] : string | number }; 
+    }) => {
 
   // no sub-key, just return the value
   if (!key.includes('.')) {
@@ -47,17 +47,17 @@ const getObject =  (key : string , object : {[key : string] : string
     // check if we have more sub-keys
     if (restKeys.length > 1) {
       if (firstKey in object) {
-        return getObject(restKeys.join('.'), (object[firstKey] as {[key : string] : string | number}));
+        return getObject(restKeys.join('.'), (object[firstKey] as { [key : string] : string | number }));
       }
       return String(object[key]);
     }
     // no more subkeys, return value
-    return ((object as { [key: string]: {[key: string] : string} })[firstKey] as { [key: string] : string })[restKeys[0]];
+    return ((object as { [key : string] : { [key : string] : string } })[firstKey] as { [key : string] : string })[restKeys[0]];
   }
 
   // not an object, return value
   return String(object[key]);
-} 
+}; 
 
 export const CustomTable = <T extends { id : number }>({
   data,
@@ -66,7 +66,7 @@ export const CustomTable = <T extends { id : number }>({
   onEditItem,
   caption,
   isLoading,
-}: CustomTableProps<T>) => {
+} : CustomTableProps<T>) => {
   return (
     <div className="overflow-x-auto shadow-md sm:rounded-lg">
       <div className="flex justify-end p-4 bg-white dark:bg-gray-800">
@@ -140,4 +140,4 @@ export const CustomTable = <T extends { id : number }>({
       </table>
     </div>
   );
-}
+};

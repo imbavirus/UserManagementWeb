@@ -8,7 +8,7 @@ import { IUserProfileFormValues } from '@/@types/user/userProfile/userProfileFor
 import { useParams, useRouter } from 'next/navigation';
 
 export default function UserProfilesPage() {
-  const { id } = useParams<{id : Array<string>}>();
+  const { id } = useParams<{ id : Array<string> }>();
   const [userProfile, setUserProfile] = useState<IUserProfile>();
   const [isLoading, setLoading] = useState(false);
   const [formSubmitting, setFormSubmitting] = useState(false);
@@ -40,10 +40,10 @@ export default function UserProfilesPage() {
   }, [id, router]);
 
   const onFormClose = () => {
-    router.push(`/profiles`);
+    router.push('/profiles');
   };
 
-  const handleFormSubmit = async (values: IUserProfileFormValues) => {
+  const handleFormSubmit = async (values : IUserProfileFormValues) => {
     setFormSubmitting(true);
     console.log('Form submitted for profile edit:', values);
     try {

@@ -28,10 +28,10 @@ export default function UserProfilesPage() {
   }, []);
 
   const handleAddUserProfile = () => {
-    router.push(`/profiles/new`);
+    router.push('/profiles/new');
   };
 
-  const handleEditUserProfile = (userProfile: IUserProfile) => {
+  const handleEditUserProfile = (userProfile : IUserProfile) => {
     router.push(`/profiles/${userProfile.id}/edit`);
   };
 

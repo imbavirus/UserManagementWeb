@@ -12,10 +12,10 @@ export default function RolesPage() {
   const router = useRouter();
 
   const onFormClose = () => {
-    router.push(`/roles`);
+    router.push('/roles');
   };
 
-  const handleFormSubmit = async (values: IRoleFormValues) => {
+  const handleFormSubmit = async (values : IRoleFormValues) => {
     setFormSubmitting(true);
     console.log('Form submitted for new role:', values);
     try {

@@ -1,10 +1,10 @@
 'use server';
 
 export const callApiEndpoint = async (
-  relativePath: string,
-  method: string,
-  body?: object,
-  queryParams?: { [key: string]: string | number | boolean }
+  relativePath : string,
+  method : string,
+  body ?: object,
+  queryParams ?: { [key : string] : string | number | boolean }
 ) => {
   const apiBaseUrl = process.env.API_BASE_URL;
   if (!apiBaseUrl) {

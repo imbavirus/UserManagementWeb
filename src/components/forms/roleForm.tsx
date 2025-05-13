@@ -7,8 +7,8 @@ import { IRoleFormValues, roleFormSchema, RoleFormValues } from '@/@types/user/r
 import { IRole } from '@/@types/user/role/role';
 
 interface RoleFormProps {
-  onSubmit: (values : IRoleFormValues) => void;
-  defaultValues? : IRole;
+  onSubmit : (values : IRoleFormValues) => void;
+  defaultValues ?: IRole;
   isLoading ?: boolean;
   submitButtonText ?: string;
   onCancel ?: () => void;
@@ -34,9 +34,9 @@ export const RoleForm= ({
       reset(RoleFormValues(defaultValues));
   }, [defaultValues, reset]);
 
-  const inputClassName = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500";
-  const errorClassName = "mt-1 text-xs text-red-600 dark:text-red-400";
-  const labelClassName = "block mb-2 text-sm font-medium text-gray-900 dark:text-white";
+  const inputClassName = 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500';
+  const errorClassName = 'mt-1 text-xs text-red-600 dark:text-red-400';
+  const labelClassName = 'block mb-2 text-sm font-medium text-gray-900 dark:text-white';
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

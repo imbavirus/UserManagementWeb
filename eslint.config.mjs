@@ -15,6 +15,7 @@ const compat = new FlatCompat({
 /** @type { import('eslint').Linter.Config[] } */
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  { ignores: ['.next/', 'node_modules/'] },
   {
     plugins: {
       '@stylistic': stylistic,

@@ -29,12 +29,12 @@ export const getRoleById = actionClient
     const { id } = parsedInput;
     const endpointWithId = `${rolesApiPath}/${id}`;
 
-    const role: IRole = await callApiEndpoint(endpointWithId, 'GET');
+    const role : IRole = await callApiEndpoint(endpointWithId, 'GET');
     return role;
   });
 
 export const getAllRoles = actionClient
   .action(async () => {
-    const roles: IRole[] = await callApiEndpoint(rolesApiPath, 'GET');
+    const roles : IRole[] = await callApiEndpoint(rolesApiPath, 'GET');
     return roles;
   });
