@@ -22,7 +22,6 @@ const SnackbarItemDisplay = ({ snackbarItem } : { snackbarItem : SnackbarMessage
   const { hideSnackbar } = useSnackbar();
   const { id, message, severity } = snackbarItem;
 
-  // Auto-hide logic is now handled in SnackbarProvider
   return (
     <div
       // Each snackbar item
