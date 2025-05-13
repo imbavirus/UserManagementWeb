@@ -3,7 +3,7 @@ import { baseModelSchema } from '../../baseModel';
 import { IRoleFormValues } from './roleFormValues';
 
 export const roleSchema = baseModelSchema.extend({
-    name: z.string().min(1, 'Name is required').max(255, 'Name can only be up to 255 characters long.'),
+    name: z.string().min(1, 'Name is required').max(255, 'Name can only be up to 255 characters long.').optional(),
 });
 
 // Infer TypeScript type (replaces the original interface)

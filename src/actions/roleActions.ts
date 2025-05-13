@@ -1,6 +1,5 @@
 'use server';
 
-import { z } from 'zod';
 import { IRole, roleSchema } from '@/@types/user/role/role';
 import { actionClient } from '@/lib/safe-action';
 import { callApiEndpoint } from '@/services/http/httpService';
@@ -10,14 +9,18 @@ import { idOnlySchema } from '@/@types/idOnly';
 // This should be the relative path, as callApiEndpoint prepends API_BASE_URL
 const rolesApiPath = '/api/Roles';
 
-export const createRole = actionClient.schema(roleSchema).action(async ({ parsedInput }) => {
-  const role : IRole = await callApiEndpoint(rolesApiPath, 'POST', parsedInput);
-  return role;
+export const createRole = actionClient
+  .schema(roleSchema)
+  .action(async ({ parsedInput }) => {
+    const role : IRole = await callApiEndpoint(rolesApiPath, 'POST', parsedInput);
+    return role;
 });
 
-export const updateRole = actionClient.schema(roleSchema).action(async ({ parsedInput }) => {
-  const role : IRole = await callApiEndpoint(rolesApiPath, 'PUT', parsedInput);
-  return role;
+export const updateRole = actionClient
+  .schema(roleSchema)
+  .action(async ({ parsedInput }) => {
+    const role : IRole = await callApiEndpoint(rolesApiPath, 'PUT', parsedInput);
+    return role;
 });
 
 export const getRoleById = actionClient
@@ -31,7 +34,6 @@ export const getRoleById = actionClient
   });
 
 export const getAllRoles = actionClient
-  .schema(z.object({}).optional()) 
   .action(async () => {
     const roles: IRole[] = await callApiEndpoint(rolesApiPath, 'GET');
     return roles;

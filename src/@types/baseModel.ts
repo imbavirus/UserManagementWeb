@@ -1,10 +1,10 @@
 
-import { randomUUID } from 'crypto';
+import { v4 } from 'uuid';
 import { z } from 'zod';
 
 export const baseModelSchema = z.object({
     id: z.number().min(0, 'ID is required').default(0),
-    guid: z.string().uuid().default(randomUUID()),
+    guid: z.string().uuid().default(v4),
     createdOn: z.string().optional(),
     updatedOn: z.string().optional(),
 });

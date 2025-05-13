@@ -5,7 +5,7 @@ import { IRole } from '../role/role';
 
 // Define the Zod schema for the form values
 export const userProfileFormSchema = userProfileSchema.extend({
-    role: optionTypeSchema.refine(val => val !== undefined, { message: 'Required' }),
+    role: optionTypeSchema.refine(val => val !== undefined, { message: 'Required' }).default({ value: '', label: 'Select Role' }),
 }).omit({
     // Omit the original ID field
     roleId: true,
@@ -15,14 +15,12 @@ export const userProfileFormSchema = userProfileSchema.extend({
 export type IUserProfileFormValues = z.infer<typeof userProfileFormSchema>;
 
 // Factory function to create form values
-export const UserProfileFormValues = (userProfile ?: IUserProfile) : IUserProfileFormValues => {
+export const UserProfileFormValues = (roles : Array<IRole>, userProfile ?: IUserProfile) : IUserProfileFormValues => {
     // Handle the default case (new unit of measure)
     if (!userProfile) {
-        return userProfileFormSchema.parse({});
+        const val =  userProfileFormSchema.parse({});
+        return val;
     }
-
-    // Fetch necessary list from Redux store if an existing unit of measure is provided
-    const roles : Array<IRole> = [] // TODO: Fetch roles
 
     const { roleId, ...rest } = userProfile;
 
@@ -34,7 +32,7 @@ export const UserProfileFormValues = (userProfile ?: IUserProfile) : IUserProfil
                 label: roles.find(x => x.id === roleId)?.name ?? '',
                 value: roleId,
             }
-            : undefined,
+            : { value: '', label: 'Select Role' },
     });
 };
 
