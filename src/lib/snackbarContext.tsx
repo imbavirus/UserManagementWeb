@@ -4,39 +4,48 @@ import React, { createContext, useContext, useState, ReactNode, useCallback } fr
 
 export type SnackbarSeverity = 'success' | 'error' | 'info' | 'warning';
 
-interface SnackbarState {
-  open : boolean;
+export interface SnackbarMessage {
+  id : string;
   message : string;
   severity : SnackbarSeverity;
+  duration ?: number;
 }
 
-interface SnackbarContextType extends SnackbarState {
-  showSnackbar : (message : string, severity : SnackbarSeverity) => void;
-  hideSnackbar : () => void;
+interface SnackbarContextType {
+  snackbars : SnackbarMessage[];
+  showSnackbar : (message : string, severity : SnackbarSeverity, duration ?: number) => void;
+  hideSnackbar : (id : string) => void;
 }
+
+const DEFAULT_DURATION = 5000; // Default duration for snackbars in milliseconds
 
 const SnackbarContext = createContext<SnackbarContextType | undefined>(undefined);
-
 export const SnackbarProvider = ({ children } : { children : ReactNode }) => {
-  const [snackbar, setSnackbar] = useState<SnackbarState>({
-    open: false,
-    message: '',
-    severity: 'info',
-  });
 
-  const showSnackbar = useCallback((message : string, severity : SnackbarSeverity) => {
-    setSnackbar({ open: true, message, severity });
-  }, []);
 
-  const hideSnackbar = useCallback(() => {
-    setSnackbar((prev) => ({ ...prev, open: false }));
-  }, []);
+    const [snackbars, setSnackbars] = useState<SnackbarMessage[]>([]);
 
-  return (
-    <SnackbarContext.Provider value={{ ...snackbar, showSnackbar, hideSnackbar }}>
-      {children}
-    </SnackbarContext.Provider>
-  );
+    const hideSnackbar = useCallback((id : string) => {
+        setSnackbars((prevSnackbars) => prevSnackbars.filter((snackbar) => snackbar.id !== id));
+    }, []);
+
+    const showSnackbar = useCallback(
+        (message : string, severity : SnackbarSeverity, duration : number = DEFAULT_DURATION) => {
+        const id = Math.random().toString(36).substring(2, 9) + Date.now().toString(36); // Generate a simple unique ID
+        setSnackbars((prevSnackbars) => [...prevSnackbars, { id, message, severity, duration }]);
+
+        setTimeout(() => {
+            hideSnackbar(id);
+        }, duration);
+        },
+        [hideSnackbar] // hideSnackbar is memoized and stable
+    );
+
+    return (
+        <SnackbarContext.Provider value={{ snackbars, showSnackbar, hideSnackbar }}>
+        {children}
+        </SnackbarContext.Provider>
+    );
 };
 
 export const useSnackbar = () => {

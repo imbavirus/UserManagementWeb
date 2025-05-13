@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect } from 'react';
-import { useSnackbar, SnackbarSeverity } from '@/lib/snackbarContext';
+import React from 'react';
+import { useSnackbar, SnackbarSeverity, SnackbarMessage } from '@/lib/snackbarContext';
 
 const getSeverityClasses = (severity : SnackbarSeverity) => {
   switch (severity) {
@@ -17,40 +17,45 @@ const getSeverityClasses = (severity : SnackbarSeverity) => {
   }
 };
 
-export const Snackbar = () => {
-  const { open, message, severity, hideSnackbar } = useSnackbar();
+// Individual Snackbar Item component for display
+const SnackbarItemDisplay = ({ snackbarItem } : { snackbarItem : SnackbarMessage }) => {
+  const { hideSnackbar } = useSnackbar();
+  const { id, message, severity } = snackbarItem;
 
-  useEffect(() => {
-    if (open) {
-      const timer = setTimeout(() => {
-        hideSnackbar();
-      }, 5000); // Auto-hide after 5 seconds
-      return () => clearTimeout(timer);
-    }
-  }, [open, hideSnackbar]);
-
-  if (!open) {
-    return null;
-  }
-
+  // Auto-hide logic is now handled in SnackbarProvider
   return (
     <div
-      className={`fixed bottom-5 right-5 p-4 rounded-md shadow-lg z-50 transition-all duration-300 transform ${
-        open ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
-      } ${getSeverityClasses(severity)}`}
+      // Each snackbar item
+      className={`p-4 rounded-md shadow-lg w-full max-w-md ${getSeverityClasses(severity)}`}
       role="alert"
       aria-live="assertive"
     >
       <div className="flex items-center justify-between">
         <span>{message}</span>
         <button
-          onClick={hideSnackbar}
+          onClick={() => hideSnackbar(id)} // Hide specific snackbar on click
           className="ml-4 text-current hover:opacity-75 focus:outline-none"
           aria-label="Close"
         >
           &times;
         </button>
       </div>
+    </div>
+  );
+};
+
+export const Snackbar = () => {
+  const { snackbars } = useSnackbar();
+
+  if (!snackbars.length) {
+    return null;
+  }
+
+  return (
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col-reverse space-y-2 items-end">
+      {snackbars.map((snackbar) => (
+        <SnackbarItemDisplay key={snackbar.id} snackbarItem={snackbar} />
+      ))}
     </div>
   );
 };
